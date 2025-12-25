@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attack on Titan - تعلم الإنجليزية مع الأنمي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #1a1630 0%, #0a0a1a 100%);
+            color: #f0f0f0;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Back Button */
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+        }
+        
+        .back-button a {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .back-button a:hover {
+            background: rgba(139, 0, 0, 0.8);
+            transform: translateX(-5px);
+        }
+        
+        /* Anime Header with Image Banner */
+        .anime-header {
+            position: relative;
+            padding: 100px 0 80px;
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+        
+        .image-banner {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-image: url('images/aot-banner.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 1;
+        }
+        
+        /* Dark overlay for text readability */
+        .anime-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
+            z-index: 2;
+        }
+        
+        .anime-header .container {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+        }
+        
+        .anime-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .anime-header h1 i {
+            color: #ff3c00;
+        }
+        
+        .anime-subtitle {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            border-right: 4px solid #ff3c00;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+            line-height: 1.8;
+        }
+        
+        /* Anime Details */
+        .anime-details {
+            position: relative;
+            z-index: 10;
+        }
+        
+        .anime-content {
+            background: rgba(26, 22, 48, 0.9);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 60, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .anime-poster-large {
+            position: relative;
+            height: 300px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .poster-large {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 152, 0, 0.25), rgba(26, 22, 48, 0.9));
+        }
+        
+        .float-icon-large {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            border: 3px solid #ff9800;
+            box-shadow: 0 0 20px rgba(255, 152, 0, 0.5);
+        }
+        
+        .description {
+            margin-bottom: 30px;
+        }
+        
+        .description h3 {
+            color: #ff9800;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .description p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        /* Anime Info */
+        .anime-info {
+            margin-top: 30px;
+        }
+        
+        .anime-info h2 {
+            color: #ff9800;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        
+        .info-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            border-right: 3px solid #ff3c00;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #ff9800;
+        }
+        
+        .info-value {
+            color: white;
+        }
+        
+        /* Download Section */
+        .download-section {
+            background: rgba(26, 22, 48, 0.9);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 60, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .download-section h2 {
+            color: #ff9800;
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-subtitle {
+            color: #ccc;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .download-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .link-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .link-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 60, 0, 0.2);
+        }
+        
+        .link-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .google-drive .link-icon {
+            color: #34A853;
+        }
+        
+        .mega .link-icon {
+            color: #D9272E;
+        }
+        
+        .mediafire .link-icon {
+            color: #0099E5;
+        }
+        
+        .link-card h3 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .link-card p {
+            color: #ccc;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff3c00, #ff9800);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .download-btn:hover {
+            background: linear-gradient(135deg, #ff9800, #ff3c00);
+            box-shadow: 0 5px 15px rgba(255, 60, 0, 0.4);
+        }
+        
+        /* Status */
+        .status-container {
+            background: rgba(0, 150, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            border-right: 4px solid #4CAF50;
+        }
+        
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            color: #4CAF50;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .status-note {
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+        
+        /* Learning Tips */
+        .learning-tips {
+            background: rgba(26, 22, 48, 0.9);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255, 60, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .learning-tips h2 {
+            color: #ff9800;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .tip-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s;
+            border-top: 3px solid #ff9800;
+        }
+        
+        .tip-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .tip-card i {
+            font-size: 2.5rem;
+            color: #ff9800;
+            margin-bottom: 15px;
+        }
+        
+        .tip-card h3 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .tip-card p {
+            color: #ccc;
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+            color: #aaa;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .footer-links a {
+            color: #ff9800;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #ff3c00;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .anime-header {
+                padding: 80px 0 60px;
+            }
+            
+            .anime-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .anime-subtitle {
+                font-size: 1.1rem;
+                padding: 15px;
+            }
+            
+            .info-grid,
+            .download-links,
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .back-button {
+                top: 10px;
+                left: 10px;
+            }
+            
+            .back-button a {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .anime-header h1 {
+                font-size: 2rem;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .anime-subtitle {
+                font-size: 1rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Back Button -->
+    <div class="back-button">
+        <a href="../index.html"><i class="fas fa-arrow-right"></i> العودة للصفحة الرئيسية</a>
+    </div>
+
+    <!-- Anime Header with Image Banner -->
+    <header class="anime-header">
+        <div class="image-banner" id="imageBanner"></div>
+        <div class="container">
+            <h1><i class="fas fa-dragon"></i>Attack on Titan</h1>
+            <p class="anime-subtitle">البشر محاصرون خلف جدران تحميهم من عمالقة مفترسين، لكن مع كل معركة، تنكشف حقيقة العالم، ويتحوّل السؤال من "كيف ننجو؟" إلى "من العدو؟".</p>
+        </div>
+    </header>
+
+    <!-- Anime Details -->
+    <main class="container anime-details">
+        <div class="anime-content">
+            <div class="anime-poster-large">
+                <div class="poster-large"></div>
+                <div class="float-icon-large"></div>
+            </div>
+
+            <div class="description">
+                <h3><i class="fas fa-book-open"></i> الوصف</h3>
+                <p>وتقع أحداثها في عالم خيالي حيث يعيش البشر داخل أراض محاطة بثلاثة أسوار ضخمة تحميهم من عمالقة يأكلون البشر، تبدأ الأحداث حين يتم اختراق أحد الأسوار وهو سور ماريا حيث تقوم العمالقة بإبادة ثلث البشرية</p>
+                <p>هذا الأنمي ممتع جداً لتعلم الإنجليزية بسبب الحوارات البسيطة والمتكررة التي تساعد على تذكر الكلمات والعبارات.</p>
+            </div>
+            
+            <div class="anime-info">
+                <h2><i class="fas fa-info-circle"></i> معلومات عن الأنمي</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-label">عدد الحلقات:</span>
+                        <span class="info-value">153 حلقة</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">تاريخ الإصدار:</span>
+                        <span class="info-value">1986</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">حجم الملفات:</span>
+                        <span class="info-value">15.4 GB</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">النوع:</span>
+                        <span class="info-value">قدرات خارقة، بسيط الفهم</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">التقييم:</span>
+                        <span class="info-value">10/10</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">تقييم الدبلجة:</span>
+                        <span class="info-value">سهل</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Download Links -->
+        <div class="download-section">
+            <h2><i class="fas fa-download"></i> روابط التحميل</h2>
+            <p class="section-subtitle">الترجمة العربية مع الدبلجة الإنجليزية (اختر خدمة التحميل المفضلة لديك)</p>
+            
+            <div class="download-links">
+                <div class="link-card google-drive">
+                    <div class="link-icon">
+                        <i class="fab fa-google-drive"></i>
+                    </div>
+                    <h3>Google Drive</h3>
+                    <p>أسرع خدمة تحميل مع عرض مباشر</p>
+                    <a href="#" class="download-btn">التحميل من جوجل درايف</a>
+                </div>
+                
+                <div class="link-card mega">
+                    <div class="link-icon">
+                        <i class="fas fa-folder-open"></i>
+                    </div>
+                    <h3>MEGA</h3>
+                    <p>خدمة تحميل سحابية مع مساحة كبيرة</p>
+                    <a href="#" class="download-btn">التحميل من MEGA</a>
+                </div>
+                
+                <div class="link-card mediafire">
+                    <div class="link-icon">
+                        <i class="fas fa-cloud-download-alt"></i>
+                    </div>
+                    <h3>MediaFire</h3>
+                    <p>خدمة تحميل مجانية وسريعة</p>
+                    <a href="#" class="download-btn">التحميل من MediaFire</a>
+                </div>
+            </div>
+            
+            <div class="status-container">
+                <div class="status ready">
+                    <i class="fas fa-check-circle"></i>
+                    <span>جاهز للتحميل</span>
+                </div>
+                <p class="status-note">جميع الملفات متاحة وجاهزة للتحميل من الخدمات المذكورة أعلاه.</p>
+            </div>
+        </div>
+        
+        <!-- Learning Tips -->
+        <div class="learning-tips">
+            <h2><i class="fas fa-lightbulb"></i> نصائح للتعلم</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <i class="fas fa-headphones"></i>
+                    <h3>استمع جيداً</h3>
+                    <p>ركز على الاستماع للدبلجة الإنجليزية دون النظر للترجمة أولاً، ثم شاهد مرة أخرى مع الترجمة.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-repeat"></i>
+                    <h3>كرر المشاهد</h3>
+                    <p>كرر المشاهد المفضلة لديك عدة مرات حتى تتعلم النطق الصحيح للجمل.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-book"></i>
+                    <h3>سجل الكلمات</h3>
+                    <p>احتفظ بمفكرة لكتابة الكلمات الجديدة والعبارات التي تسمعها في الأنمي.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>مشروع غير ربحي لتعليم اللغة الإنجليزية من خلال الأنمي &copy; 2023</p>
+            <p>جميع حقوق الأنمي تعود لأصحابها الأصليين</p>
+            <div class="footer-links">
+                <a href="../index.html"><i class="fas fa-home"></i> الرئيسية</a>
+                <a href="#"><i class="fas fa-question-circle"></i> المساعدة</a>
+                <a href="#"><i class="fas fa-envelope"></i> الاتصال</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Image loading and fallback
+        document.addEventListener('DOMContentLoaded', function() {
+            const imageBanner = document.getElementById('imageBanner');
+            const imagePaths = [
+                'images/aot-banner.jpg',
+                'images/aot-wallpaper.jpg',
+                'aot-banner.jpg',
+                'aot-wallpaper.jpg',
+                'https://images.rpgsite.net/image/da49c9a1/48307/original/AttackOnTitan_08.jpg' // Fallback image
+            ];
+            
+            function testImage(url) {
+                return new Promise((resolve) => {
+                    const img = new Image();
+                    img.onload = () => resolve({url, exists: true});
+                    img.onerror = () => resolve({url, exists: false});
+                    img.src = url;
+                });
+            }
+            
+            async function loadBannerImage() {
+                for (const path of imagePaths) {
+                    const result = await testImage(path);
+                    if (result.exists) {
+                        console.log('Using image:', path);
+                        imageBanner.style.backgroundImage = `url('${path}')`;
+                        
+                        // If using fallback Unsplash image, add specific styling
+                        if (path.includes('unsplash.com')) {
+                            imageBanner.style.backgroundPosition = 'center 30%';
+                        }
+                        return;
+                    }
+                }
+                
+                // If no image found, use gradient fallback
+                console.log('No image found, using gradient fallback');
+                imageBanner.style.background = 'linear-gradient(135deg, #784800, #913013)';
+            }
+            
+            loadBannerImage();
+            
+            // Add hover effects to download buttons
+            const downloadBtns = document.querySelectorAll('.download-btn');
+            downloadBtns.forEach(btn => {
+                btn.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.05)';
+                });
+                
+                btn.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

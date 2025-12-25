@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تعلم الإنجليزية مع الأنمي - Anime English Learning</title>
+    <title>تعلم الإنجليزية ب الأنمي - Anime English Learning</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,13 +11,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Sweeping character -->
+    <!-- Sweeping character with GIF -->
     <div class="sweeper">
-        <div class="sweeper-icon">🧹</div>
+        <div class="sweeper-icon"></div>
         <div class="sweeper-text">أنا أنظف هنا!</div>
     </div>
 
-    <!-- Header -->
+    <!-- Header with GIF background -->
     <header>
         <div class="container">
             <h1><i class="fas fa-play-circle"></i> تعلم الإنجليزية مع الأنمي</h1>
@@ -27,8 +27,8 @@
 
     <!-- Main Content -->
     <main class="container">
-        <h2><i class="fas fa-film"></i> الأنمي المتاح</h2>
-        <p class="subtitle">انقر على أي أنمي للوصول إلى التفاصيل وروابط التحميل</p>
+        <h2><i class="fas fa-film"></i> الأنميات المتوفرة حالياً :</h2>
+        <p class="subtitle">أضغط ع الإنمي وراح يوديك لصفحته الخاصة</p>
         
         <div class="anime-grid" id="animeGrid">
             <!-- Anime cards will be loaded here by JavaScript -->
@@ -49,5 +49,39 @@
     </footer>
 
     <script src="js/script.js"></script>
+        <!-- Music Player -->
+    <div class="music-player">
+        <div class="player-container">
+            <div class="player-gif" id="player-gif"></div>
+            <div class="player-controls">
+                <button class="player-btn" id="play-btn">
+                    <i class="fas fa-play"></i>
+                </button>
+                <button class="player-btn" id="pause-btn">
+                    <i class="fas fa-pause"></i>
+                </button>
+                <button class="player-btn" id="mute-btn">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+            </div>
+            <div class="volume-control">
+                <input type="range" id="volume-slider" min="0" max="100" value="30">
+                <span class="volume-text">30%</span>
+            </div>
+            <div class="track-info">
+                <span id="track-name">روق يا عزيزي</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden Audio Element -->
+    <audio id="background-music" loop>
+        <source src="audio/main-theme.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
 </body>
 </html>
